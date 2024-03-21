@@ -17,7 +17,7 @@ def minOperations(n):
     div = 2
     num_operations = 0
     if n == 1:
-        return None
+        return num_operations
     while n > 1:
         while n % div:
             div += 1
