@@ -13,15 +13,13 @@ def format_each_line():
         status_code = text[-2]
         file_size = text[-1]
         total_size += file_size
-        for key, value in dictionary.items():
-            if key == status_code:
-                value += 1
+        if status_code in dictionary:
+            dictionary[status_code] += 1
         count += 1
         if count == 10:
             print(f"File size: {total_size}")
             for key, value in dictionary.items():
                 print(f"{key}: {value}")
-            return format_each_line()
         
 format_each_line()
                 
