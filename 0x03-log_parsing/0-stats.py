@@ -21,6 +21,8 @@ def format_each_line():
             for key, value in dictionary.items():
                 print(f"{key}: {value}")
             return format_each_line()
+        
+format_each_line()
                 
 
 
