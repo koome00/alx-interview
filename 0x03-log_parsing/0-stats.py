@@ -9,7 +9,9 @@ def format_each_line():
     uses regular expression to match and then give
     metrics
     """
-    pattern = re.compile(r'^(\d{1, 3}\.\d{1, 3}\.\d{1,3}\.\d{1, 3}) - \[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6})\] "([^"]+)" (\d{3}) (\d+)$')
+    pattern = re.compile(r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - '
+                         r'\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6})\] '
+                         r'"([^"]+)" (\d{3}) (\d+)$')
     dictionary = {200: 0, 301: 0, 400: 0, 403: 0, 404: 0, 405: 0, 500: 0}
     total_size = 0
     count = 0
@@ -26,6 +28,9 @@ def format_each_line():
                 print(f"File size: {total_size}")
                 for key, value in dictionary.items():
                     print(f"{key}: {value}")
+        else:
+            continue
+
 
 if __name__ == "__main__":
     try:
