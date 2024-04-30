@@ -10,7 +10,6 @@ def rotate_2d_matrix(matrix):
     count = 0
     for row in matrix:
         for col in range(len(row)):
-            print(col, count)
             new[col][count] = matrix[count][col]
         count += 1
     matrix[:] = new
