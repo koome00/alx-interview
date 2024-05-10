@@ -31,7 +31,5 @@ def island_perimeter(grid):
                 if y > 0:
                     if grid[x][y-1] == 1:
                         peri = peri - 1
-                if peri == 4:
-                    peri = 0
                 total_peri = peri + total_peri
     return total_peri
