@@ -36,13 +36,9 @@ def isWinner(x, nums):
                 ben += 1
                 play = not play
                 continue
-        if maria > ben:
+        if play:
             wins[0] += 1
-        if maria < ben:
-            wins[1] += 1
-        if maria == ben and maria % 2 == 0:
-            wins[0] += 1
-        if maria == ben and maria % 2 == 1:
+        else:
             wins[1] += 1
         x -= 1
         if x == 0:
