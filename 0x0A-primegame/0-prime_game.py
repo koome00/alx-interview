@@ -9,42 +9,31 @@ def isWinner(x, nums):
     prime game to be played by
     Ben & Maria
     """
-    ben = 0
-    maria = 0
+    wins = [0, 0]
+    maria = ben = 0
+    num = max(nums)
     play = True
-    j = 0
-    winner = [0, 0]
-    while x > 0:
-        ben = 0
-        maria = 0
-        num = nums[j]
-        if num == 1:
-            winner[1] += 1
-        else:
-            p = 2
-            prime = [True for i in range(num+1)]
-            while (p * p) <= num:
-                if prime[p] == True:
-                    for i in range(p * p, num + 1, p):
-                        prime[i] = False
-            for idx in range(len(prime)):
-                if play:
-                    if prime[idx]:
-                        maria += 1
-                else:
-                    if prime[idx]:
-                        ben += 1
-                play = not play
-
-            if maria > ben:
-                winner[0] += 1
-            if ben > maria:
-                winner[1] += 1
-        x -= 1
-        j += 1
-    if winner[0] > winner[1]:
+    prime = [True for i in range(num+1)]
+    p = 2
+    while (p * p) <= num:
+        if prime[p] == True:
+            for i in range(p * p, num + 1, p):
+                prime[i] = False
+        p += 1
+    prime[0] = prime[1] = False
+    for value in prime:
+        if play and value:
+            maria += 1
+        if value and not play:
+            ben += 1
+        play = not play
+    if maria > ben:
+        wins[0] += 1
+    if maria < ben:
+        wins[1] += 1
+    if wins[0] > wins[1]:
         return "Maria"
-    elif winner[1] > winner[0]:
+    elif wins[1] > wins[0]:
         return "Ben"
     else:
         return None
