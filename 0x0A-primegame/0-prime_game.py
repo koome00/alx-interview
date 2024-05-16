@@ -8,10 +8,11 @@ def isWinner(x, nums):
     """
     prime game to be played by
     Ben & Maria
+    Optimal play for both is choosing
+    the biggest prime num
     """
     wins = [0, 0]
     sorted_primes = sorted(nums, reverse=True)
-    print(sorted_primes)
     for num in sorted_primes:
         if num == 1:
             wins[1] += 1
@@ -35,7 +36,6 @@ def isWinner(x, nums):
                 ben += 1
                 play = not play
                 continue
-        print(prime)
         if maria > ben:
             wins[0] += 1
         if maria < ben:
@@ -44,7 +44,6 @@ def isWinner(x, nums):
             wins[0] += 1
         if maria == ben and maria % 2 == 1:
             wins[1] += 1
-        print(num, maria, ben)
         x -= 1
         if x == 0:
             break
