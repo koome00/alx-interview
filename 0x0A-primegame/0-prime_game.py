@@ -11,13 +11,15 @@ def isWinner(x, nums):
     Optimal play for both is choosing
     the biggest prime num
     """
+    if x <= 0 or nums is None:
+        return None
     wins = [0, 0]
     sorted_primes = sorted(nums, reverse=True)
     for num in sorted_primes:
+        play = True
         if num == 1:
             wins[1] += 1
             continue
-        play = True
         maria = ben = 0
         prime = [True for i in range(num+1)]
         p = 2
@@ -36,13 +38,11 @@ def isWinner(x, nums):
                 ben += 1
                 play = not play
                 continue
+
         if play:
-            wins[0] += 1
-        else:
             wins[1] += 1
-        x -= 1
-        if x == 0:
-            break
+        else:
+            wins[0] += 1
 
     if wins[0] > wins[1]:
         return "Maria"
